@@ -19,9 +19,11 @@ app.use(compression())
 // morgan("combined")
 
 // init db
+require('./dbs/init.mongodb');
+const { checkOverload } = require('./helpers/check.connect');
+checkOverload();
 
 // init routes
-
 app.get('/', (req, res, next) => {
     const strCompress = 'Hello Loc';
     return res.status(200).json({
