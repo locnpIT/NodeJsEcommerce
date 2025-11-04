@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const app = express();
 
+// console.log(`Proocess:: `, process.env);
 // init middleware
 // npm i morgan --save-dev
 // npm i helmet --save-dev
