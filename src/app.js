@@ -13,6 +13,11 @@ const app = express();
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(compression())
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}))
+
 // morgan("dev")
 // morgan("common")
 // morgan("short")
@@ -26,13 +31,8 @@ const { checkOverload } = require('./helpers/check.connect');
 checkOverload();
 
 // init routes
-app.get('/', (req, res, next) => {
-    const strCompress = 'Hello Loc';
-    return res.status(200).json({
-        message: "Welcome to ECM Nodejs",
-        metadata: strCompress.repeat(1000)
-    })
-})
+
+app.use('/', require('./routes/index'));
 
 // handling error
 
